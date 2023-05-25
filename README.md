@@ -41,6 +41,8 @@ Line 27 and 28
 npm start
 ```
 
+**OR**
+
 ```bash
 yarn start
 ```
