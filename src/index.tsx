@@ -24,15 +24,19 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 
 );
 
-const projectId = "dummy"
-const apiKey = "dummy"
+
+const projectId = process.env.REACT_APP_PROJECT_ID || ""
+const apiKey = process.env.REACT_APP_API || ""
+
+console.log(projectId)
+console.log(apiKey)
 
 const connectors = connectorsForWallets([
     {
         groupName: "Social",
         wallets: [
             googleMagicWallet({
-                apiKey:apiKey,
+                apiKey,
                 chains
             })
         ],
