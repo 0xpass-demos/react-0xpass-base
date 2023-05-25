@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import '0xpass/style.css';
-import { connectorsForWallets, PassProvider } from '0xpass';
+import { PassProvider, connectorsForWallets, createClient } from "0xpass";
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
@@ -51,11 +51,16 @@ const connectors = connectorsForWallets([
 ])
 
 const wagmiConfig = createConfig({
-  autoConnect: true,
   connectors,
   publicClient,
   webSocketPublicClient,
 });
+
+const passClient=createClient({
+    apiKey: apiKey,
+    chains,
+});
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -64,7 +69,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      <PassProvider apiKey={apiKey} chains={chains}>
+      <PassProvider client={passClient}>
         <App />
       </PassProvider>
     </WagmiConfig>
