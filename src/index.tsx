@@ -24,8 +24,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 
 );
 
-const projectId = "dummy_id"
-const apiKey = "dummy_api_key"
+const projectId = "dummy"
+const apiKey = "dummy"
 
 const connectors = connectorsForWallets([
     {
@@ -38,10 +38,10 @@ const connectors = connectorsForWallets([
         ],
     },
     {
-        groupName: "Apps",
+        groupName: "EOA",
         wallets: [
+            metaMaskWallet({projectId, chains}),
             ledgerWallet({projectId, chains}),
-            metaMaskWallet({projectId, chains})
         ],
     },
 ])
@@ -60,7 +60,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      <PassProvider enabledConnectors = "" apiKey={apiKey} chains={chains}>
+      <PassProvider apiKey={apiKey} chains={chains}>
         <App />
       </PassProvider>
     </WagmiConfig>
