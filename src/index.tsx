@@ -7,59 +7,52 @@ import './index.css';
 import '0xpass/style.css';
 import { PassProvider, connectorsForWallets, createClient } from "0xpass";
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import App from './App';
 import {ledgerWallet, metaMaskWallet, googleMagicWallet} from "0xpass/wallets";
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
-  ],
-  [publicProvider()]
 
+
+const projectId = "dummuy"
+const apiKey = "dummy"
+
+
+const { chains, publicClient } = configureChains(
+    [mainnet, polygon, optimism, arbitrum],
+    [publicProvider()]
 );
-
-
-const projectId = process.env.REACT_APP_PROJECT_ID || ""
-const apiKey = process.env.REACT_APP_API || ""
-
-console.log(projectId)
-console.log(apiKey)
-
-const connectors = connectorsForWallets([
-    {
-        groupName: "Social",
-        wallets: [
-            googleMagicWallet({
-                apiKey,
-                chains
-            })
-        ],
-    },
-    {
-        groupName: "EOA",
-        wallets: [
-            metaMaskWallet({projectId, chains}),
-            ledgerWallet({projectId, chains}),
-        ],
-    },
-])
-
-const wagmiConfig = createConfig({
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-});
 
 const passClient=createClient({
     apiKey: apiKey,
     chains,
 });
+
+const connectors = connectorsForWallets([
+    {
+        groupName: "Social",
+        wallets: [
+            // To use magic wallet, do enable magic sdk and add creds on ui
+            // googleMagicWallet({
+            //     chains,
+            //     apiKey: apiKey,
+            // }),
+        ],
+    },
+    {
+        groupName: "Others",
+        wallets: [
+            metaMaskWallet({ projectId, chains }),
+            ledgerWallet({ projectId, chains }),
+        ],
+    },
+]);
+
+const wagmiConfig = createConfig({
+    connectors: connectors,
+    publicClient,
+});
+
 
 
 const root = ReactDOM.createRoot(
@@ -67,13 +60,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
       <PassProvider client={passClient}>
         <App />
       </PassProvider>
     </WagmiConfig>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
