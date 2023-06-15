@@ -156,12 +156,17 @@ const App = () => {
                                 <br/>
                                 <Button onClick={() => setFunctionOutput(user?.address)}>Address</Button>
                                 <br/>
-                                <Button onClick={() => logout()}> Logout</Button>
-                                <br/>
                                 <Button onClick={async () => {
                                     const token = await getAccessToken();
                                     setFunctionOutput(token);
                                 }}>Access Token</Button>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <Button onClick={() => logout()}> Logout</Button>
+                                <br/>
+                                <br/>
+                                <br/>
                                 <br/>
                                 <Button onClick={() => {
 
@@ -169,7 +174,7 @@ const App = () => {
                                     setFunctionOutput({
                                         ok: true,
                                     });
-                                }}> Link Twitter</Button>
+                                }}> Link Google (under progress)</Button>
                                 {/*<br/>*/}
                                 {/*<Button onClick={() => logout()}> Logout</Button>*/}
                                 {/*<br/>*/}
