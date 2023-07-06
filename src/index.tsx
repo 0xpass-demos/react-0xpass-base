@@ -10,7 +10,7 @@ import {configureChains, createConfig, WagmiConfig} from 'wagmi';
 import {mainnet, polygon, optimism, arbitrum, goerli} from 'wagmi/chains';
 import {publicProvider} from 'wagmi/providers/public';
 import App from './App';
-import { metaMaskWallet, googleMagicWallet, twitterMagicWallet, rainbowWallet, trustWallet} from "0xpass/wallets";
+import { metaMaskWallet, rainbowWallet, emailMagicWallet, ledgerWallet } from "0xpass/wallets";
 
 const {chains, publicClient, webSocketPublicClient} = configureChains(
     [
@@ -24,22 +24,15 @@ const {chains, publicClient, webSocketPublicClient} = configureChains(
 );
 
 
-const projectId = process.env.REACT_APP_PROJECT_ID || ""
-const apiKey = process.env.REACT_APP_API || ""
+const projectId = "2d525ce8aa6e9dae52c99472ce6650bc"
+//const apiKey = "" //enter your 0xpass key here
 
 
 const connectors = connectorsForWallets([
     {
         groupName: "Social",
         wallets: [
-            googleMagicWallet({
-                apiKey: apiKey,
-                chains
-            }),
-            twitterMagicWallet({
-                apiKey: apiKey,
-                chains
-            })
+            // emailMagicWallet({ apiKey: "your magic key", chains }),
         ],
     },
     {
@@ -47,8 +40,7 @@ const connectors = connectorsForWallets([
         wallets: [
             metaMaskWallet({projectId, chains}),
             rainbowWallet({projectId, chains}),
-            trustWallet({projectId, chains}),
-
+            ledgerWallet({projectId, chains}),
         ],
     },
 ]);
