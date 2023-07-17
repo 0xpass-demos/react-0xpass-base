@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-import '0xpass/style.css';
+import '0xpass/styles.css';
 import {PassProvider, connectorsForWallets, createClient} from "0xpass";
 import {configureChains, createConfig, WagmiConfig} from 'wagmi';
 import {mainnet, polygon, optimism, arbitrum, goerli} from 'wagmi/chains';
@@ -23,24 +23,25 @@ const {chains, publicClient, webSocketPublicClient} = configureChains(
     [publicProvider()]
 );
 
-
-const projectId = "2d525ce8aa6e9dae52c99472ce6650bc"
-//const apiKey = "" //enter your 0xpass key here
+// all configs here
+const connectWalletProjectId = "1ccaf857ab73b97e10a5a333aab8edaf"  //obtained from https://cloud.walletconnect.com/sign-in
+const OxpassApiKey = "mykey" //enter your 0xpass key obtained from https://0xpass.io/register
+const magicPublicKey = "pk_live_262C7B7D9D959DBA" //obtained from https://dashboard.magic.link/signup
 
 
 const connectors = connectorsForWallets([
-    {
-        groupName: "Social",
-        wallets: [
-            // emailMagicWallet({ apiKey: "your magic key", chains }),
-        ],
-    },
+    // {
+    //     groupName: "Social",
+    //     wallets: [
+    //         emailMagicWallet({ apiKey: magicPublicKey, chains }),
+    //     ],
+    // },
     {
         groupName: "EOA",
         wallets: [
-            metaMaskWallet({projectId, chains}),
-            rainbowWallet({projectId, chains}),
-            ledgerWallet({projectId, chains}),
+            metaMaskWallet({projectId: connectWalletProjectId, chains}),
+            rainbowWallet({projectId: connectWalletProjectId, chains}),
+            ledgerWallet({projectId: connectWalletProjectId, chains}),
         ],
     },
 ]);
@@ -53,7 +54,7 @@ const wagmiConfig = createConfig({
 
 
 const passClient = createClient({
-    apiKey: apiKey,
+    apiKey: OxpassApiKey,
     chains,
 });
 
@@ -64,11 +65,29 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <WagmiConfig config={wagmiConfig}>
-            <PassProvider client={passClient}>
-                <App/>
-            </PassProvider>
-        </WagmiConfig>
+        {
+            OxpassApiKey
+            &&
+            <WagmiConfig config={wagmiConfig}>
+                <PassProvider client={passClient}>
+                    <App/>
+                </PassProvider>
+            </WagmiConfig>
+        }
+        {
+            !OxpassApiKey
+            &&
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#e8e2e2', padding: '20px', margin: '30vh 0 0 0' }}>
+                <h2 style={{ color: '#cc0000', fontSize: '25px' }}>0xpass API key not entered</h2>
+                <br/>
+                <p>Step 1: Sign up on <a style={{ color: 'blue'}} href="https://0xpass.io/register"> 0xpass </a></p>
+                <p>Step 2: Create project and obtain key </p>
+                <p>Step 3: Replace API Key on Line 28 of code in index.tsx</p>
+            </div>
+
+        }
+
+
     </React.StrictMode>
 );
 

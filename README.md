@@ -6,14 +6,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-```bash
-npm install --legacy-peer-deps
-```
 
-or 
 ```bash
+#fastest - takes only 46 seconds.
 yarn install
 ```
+or 
+
+```bash
+npm install --force
+```
+
 
 ## Signup on 0xpass
 
@@ -26,24 +29,24 @@ Signup on [0xpass Dashboard](https://dashboard.0xpass.io/)
 
 ## Extract project ID and API Keys
 
-Once you are inside project, copy Project ID(1) and API Keys (2)
+Once you are inside project, copy 0xpass API Keys(2)
 ![Project API Key](src/images/demo/project-and-keys.png)
 
 
-## Replace projectID and apiKey in index.tsx
-Line 27 and 28
+## Replace 0xpass apiKey in index.tsx
+Line 28
 ![Dummy](src/images/demo/dummy.png)
 
 
 ## Start the appp
 
 ```bash
-npm start
+yarn start
 ```
 
 **OR**
 
 ```bash
-yarn start
+npm start
 ```
 
