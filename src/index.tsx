@@ -25,7 +25,7 @@ const {chains, publicClient, webSocketPublicClient} = configureChains(
 
 // all configs here
 const connectWalletProjectId = "1ccaf857ab73b97e10a5a333aab8edaf"  //obtained from https://cloud.walletconnect.com/sign-in
-const OxpassApiKey = "mykey" //enter your 0xpass key obtained from https://0xpass.io/register
+const OxpassApiKey = "" //enter your 0xpass key obtained from https://0xpass.io/register
 const magicPublicKey = "pk_live_262C7B7D9D959DBA" //obtained from https://dashboard.magic.link/signup
 
 
