@@ -35,7 +35,7 @@ Once you are inside project, copy 0xpass API Keys(2)
 
 ## Replace 0xpass apiKey in index.tsx
 Line 28
-![dummy.png](src/images/demo/dummy.png)
+![dummy.png](src/images/demo/screen.png)
 
 
 ## Start the appp
