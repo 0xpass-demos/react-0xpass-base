@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"0xpass@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/0xpass/-/0xpass-0.1.7.tgz#a67c5b32c28702003bf1a62f92164dc591aacb85"
-  integrity sha512-mSFMjFhHkaBDJ5M3rrGlsuyJdoxHLLA9MSd8f+qBb4m8WXebxD5kM8Od3jngyxj2mViUBmGIUETTsJTdXxmmDw==
+"0xpass@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/0xpass/-/0xpass-0.1.13.tgz#6c61a65ed50f3b903c199b4b4f5b01929ea7e0e9"
+  integrity sha512-visRxJB48KnGkEllSAYGtnc1yc8BoXtzi4HwA/d3MJ08J8btPFTnIA0FPeGIUYLgq/dXQNA8GA2NyV0mCc5CcQ==
   dependencies:
     "@0xpass/core" "0.1.0"
-    "@0xpass/wagmi" "0.1.4"
+    "@0xpass/wagmi" "0.1.5"
     "@radix-ui/react-dialog" "^1.0.2"
     "@radix-ui/react-dropdown-menu" "^2.0.1"
     "@radix-ui/react-label" "^2.0.0"
@@ -33,10 +33,10 @@
     debug "^4.3.4"
     siwe "1.1.6"
 
-"@0xpass/wagmi@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@0xpass/wagmi/-/wagmi-0.1.4.tgz#3d7e21f6fd04f9fc6ec6b46d52b6efcbd7cc1f49"
-  integrity sha512-K3q8QajPBn55NbUWIZEPaTXtTkECoYvn/LC00mjp5TjIEt1qQ8vzEuqrKcWevX+wmzaZV3jlRkcw88YsTHlV2w==
+"@0xpass/wagmi@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@0xpass/wagmi/-/wagmi-0.1.5.tgz#0e0150f5d5754e16680e50dccf3d59df09b8069b"
+  integrity sha512-XlXsAy0e/keULzZoZAsokW+RztE3h4Ebbk7xPuG54gUzocb6nKD1H8tpDIQAAo3Aoh7SuzhNEFFzofn7/yKd9w==
   dependencies:
     "@0xpass/core" "^0.1.0"
     "@magic-ext/oauth" "^11.1.4"
